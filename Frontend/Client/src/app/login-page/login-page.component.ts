@@ -7,13 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  username: String;
+  password: String;
+  constructor() {}
 
   ngOnInit() {
-  }
 
-  Login(): void {
-    console.log('lfajlsdj');
   }
-
 }
+
