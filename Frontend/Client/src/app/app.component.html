@@ -1,4 +1,7 @@
-<li *ngFor="let variable of x">
-  {{variable.id}}
-  {{variable.name}}
-</li>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3" *ngFor="let card of cards"> 
+      <app-card class="card" [card]="card"></app-card>
+    </div>
+  </div>
+</div>

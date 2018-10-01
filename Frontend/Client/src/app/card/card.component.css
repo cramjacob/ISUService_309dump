@@ -1,0 +1,14 @@
+.card-text {
+    height: 6em;
+    overflow: scroll;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.locationdate {
+    color: #5f5f5f;
+    font-style: italic;
+}
