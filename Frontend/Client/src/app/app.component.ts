@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OfferingService } from './offering.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Client';
+  public x;
+
+  constructor(private offeringService:OfferingService) {
+  }
+
+  ngOnInit() {
+    this.x = this.offeringService.GetOfferings()
+  }
 }
