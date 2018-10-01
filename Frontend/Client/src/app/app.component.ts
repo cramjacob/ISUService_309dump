@@ -47,13 +47,4 @@ export class AppComponent {
       Location: 'Ames, IA'
     }
 ];
-  // user1 = {
-
-  //   service: '311 Homework Help',
-  //   description: 'I am a smart student who wants to assist others with their 311 homework.',
-  //   location: 'Parks library, Ames',
-  //   date: '9/29/2018',
-  // };
-
-
 }
