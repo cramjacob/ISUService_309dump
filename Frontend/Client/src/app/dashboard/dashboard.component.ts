@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from '../models/card.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public Cards: Card[] = [];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  Submit(form: any): void {
+    console.log(form);
+  }
 }

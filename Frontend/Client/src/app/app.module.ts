@@ -5,9 +5,8 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
-import { ServiceFormComponent } from './service-form/service-form.component';
-import { FormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,6 @@ import { CardComponent } from './card/card.component';
     LoginPageComponent,
     DashboardComponent,
     HeaderComponent,
-    ServiceFormComponent,
     CardComponent
   ],
   imports: [

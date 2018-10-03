@@ -1,8 +1,18 @@
 <div class="row">
-    <div class="col-sm-3">
-        <app-service-form></app-service-form>
+    <div class="col-sm-4">
+        <h4>Create an Offering</h4>
+        <form #form="ngForm" (ngSubmit)="Submit(form.value)">
+            <label>Title</label>
+            <input type="text" name="title" ngModel>
+            
+            <label>Description</label>
+            <input type="text" name="description" ngModel>
+
+            <button type="submit" 
+                    [disabled]="false">Submit</button>
+        </form>
     </div>
-    <div class="col-sm-9">
-        <!-- <app-card *ngFor="let card of Cards" [card]="card"></app-card> -->
+    <div *ngIf="Cards" class="col-sm-8">
+        <app-card *ngFor="let card of Cards" [card]="card"></app-card>
     </div>
 </div>
