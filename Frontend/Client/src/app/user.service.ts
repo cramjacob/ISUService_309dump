@@ -5,19 +5,19 @@ import { User } from './models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class OfferingService {
+export class UserService {
 
-  private url = 'http://localhost:53902/api/offering';
+  private url = 'http://localhost:53902/api/user';
 
   constructor(private http: HttpClient) { }
 
-  GetOfferings(): void {
+  GetAllUsers(): void {
     this.http.get(this.url).subscribe(val => {
       console.log(val);
     });
   }
 
-  GetOffering(id: number): void {
+  GetSpecificUser(id: number): void {
     this.http.get(this.url + '/' + id).subscribe(val => {
       console.log(val);
     });
