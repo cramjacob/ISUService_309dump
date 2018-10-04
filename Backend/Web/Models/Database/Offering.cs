@@ -8,6 +8,7 @@ using Web.Data;
 
 namespace Web.Models
 {
+    // This model is based directly off of the DB schema
     public class Offering
     {
         public int ID { get; set; }
@@ -16,7 +17,7 @@ namespace Web.Models
 
         public string Description { get; set; }
 
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
         public int UserID { get; set; }
 

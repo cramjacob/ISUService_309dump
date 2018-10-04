@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Web.Data;
 using Web.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Web.Controllers
 {
+    [Produces("application/json")]
     [Route("api/offering")]
     public class OfferingController : Controller
     {
@@ -46,8 +45,19 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public Offering Post(Offering offering)
         {
+            offering.UserID = 1;
+            try
+            {
+                _context.offering.Add(offering);
+                _context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            return _context.offering.Find(offering.ID);
         }
 
         /// <summary>
