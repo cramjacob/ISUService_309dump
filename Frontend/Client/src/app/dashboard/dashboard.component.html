@@ -3,15 +3,20 @@
         <h4>Create an Offering</h4>
         <form #form="ngForm" (ngSubmit)="Submit(form.value)">
             <label>Title</label>
+            <br>
             <input type="text" name="title" ngModel>
             <br>
             <label>Description</label>
+            <br>
             <input type="text" name="description" ngModel>
 
             <br>
 
             <label>Price</label>
-            <input type="text" name="price" ngModel>
+            <br>
+            <form class="range-field">
+                <input type="range" min="0" max="100" />
+            </form>
 
             <br>
 
@@ -19,7 +24,9 @@
                     [disabled]="false">Submit</button>
         </form>
     </div>
-    <div *ngIf="Cards" class="col-sm-8">
-        <app-card *ngFor="let card of Cards" [card]="card"></app-card>
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let card of cards">
+            <app-card class="card" [card]="card"></app-card>
+        </div>
     </div>
 </div>

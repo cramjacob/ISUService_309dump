@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from '../models/card.model';
 import { NgForm } from '@angular/forms';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-dashboard',
