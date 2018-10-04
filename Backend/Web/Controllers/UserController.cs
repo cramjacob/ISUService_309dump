@@ -9,7 +9,7 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Produces("application/json")]
-    [Route("api/offering")]
+    [Route("api/user")]
     public class UserController : Controller
     {
         private readonly DatabaseContext _context;
@@ -23,7 +23,7 @@ namespace Web.Controllers
         /// Gets all users from the database
         /// </summary>
         /// <returns>All tuples from sys.user table</returns>
-        [HttpGet("users")]
+        [HttpGet]
         public IEnumerable<User> Get()
         {
             return _context.user;
