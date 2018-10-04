@@ -23,7 +23,7 @@ namespace Web.Controllers
         /// Gets all users from the database
         /// </summary>
         /// <returns>All tuples from sys.user table</returns>
-        [HttpGet()]
+        [HttpGet]
         public IEnumerable<User> Get()
         {
             return _context.user;
