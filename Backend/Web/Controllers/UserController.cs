@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Web.Data;
 using Web.Models;
@@ -9,6 +10,7 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Produces("application/json")]
+    [EnableCors("SiteCorsPolicy")]
     [Route("api/user")]
     public class UserController : Controller
     {
@@ -24,6 +26,7 @@ namespace Web.Controllers
         /// </summary>
         /// <returns>All tuples from sys.user table</returns>
         [HttpGet]
+        [EnableCors("SiteCorsPolicy")]
         public IEnumerable<User> Get()
         {
             return _context.user;
@@ -45,8 +48,20 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
-        public void Post([FromBody]JsonObject value)
+        [EnableCors("SiteCorsPolicy")]
+        public User Post(User user)
         {
+            try
+            {
+                _context.user.Add(user);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return _context.user.Find(user.ID);
         }
 
         /// <summary>

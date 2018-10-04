@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Card } from './models/card.model';
+import { OfferingService } from './offering.service';
+import { UserService } from './user-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,44 +9,19 @@ import { Card } from './models/card.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Client';
-  public cards: Card[] = [
-    {
-      Title: 'Title of the Service',
-      Description: `Lorem ipsonsequat.`,
-      ImgUrl: 'https://cyclones.com/images/2016/2/17/JackTriceStadium3.jpg',
-      Date: new Date('9/1/2018'),
-      Location: 'Ames, IA'
-    },
-    {
-      Title: 'Title of the Service',
-      Description: `Lorem ipsum dolor sit amet,
-      kconsectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi
-      ut aliquip ex ea commodo consequat.`,
-      ImgUrl: 'https://cyclones.com/images/2016/2/17/JackTriceStadium3.jpg',
-      Date: new Date('9/1/2018'),
-      Location: 'Ames, IA'
-    },
-    {
-      Title: 'Title of the Service',
-      Description: `Lorem ipsum dolor sit amet,
-      kconsectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi
-      ut aliquip ex ea commodo consequat.`,
-      ImgUrl: 'https://cyclones.com/images/2016/2/17/JackTriceStadium3.jpg',
-      Date: new Date('9/1/2018'),
-      Location: 'Ames, IA'
-    },
-    {
-      Title: 'Title of the Service',
-      Description: `Lorem ipsum dfdfdfdfdfrcitation ullamco laboris nisi
-      ut aliquip ex ea commodo consequat.`,
-      ImgUrl: 'https://cyclones.com/images/2016/2/17/JackTriceStadium3.jpg',
-      Date: new Date('9/1/2018'),
-      Location: 'Ames, IA'
-    }
-];
+
+  public asdf: any;
+  /**
+   *
+   */
+  constructor(private userService: UserService) { }
+  
+  Get(): any {
+    this.asdf = this.userService.GetAllUsers();
+  }
+
+  GetSpecific(): any {
+    let id = 1;
+    this.userService.GetSpecificUser(id);
+  }
 }

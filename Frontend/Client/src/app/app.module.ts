@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { OfferingService } from './offering.service';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
@@ -10,9 +12,10 @@ import { CardComponent } from './card/card.component';
     CardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [OfferingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
