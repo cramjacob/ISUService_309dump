@@ -4,28 +4,25 @@
         <form #form="ngForm" (ngSubmit)="Submit(form.value)">
             <label>Title</label>
             <br>
-            <input type="text" name="title" ngModel>
+            <input type="text" name="title" [(ngModel)]="title">
             <br>
             <label>Description</label>
             <br>
-            <input type="text" name="description" ngModel>
+            <input type="text" name="description" [(ngModel)]="description">
 
             <br>
 
             <label>Price</label>
             <br>
-            <form class="range-field">
-                <input type="range" min="0" max="100" />
-            </form>
+            <input type="range" name="Price" name="price" [(ngModel)]="value"  min="0" max="100">         
+            <p>{{ value }}</p>
 
             <br>
-
-            <button type="submit" 
-                    [disabled]="false">Submit</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
     <div class="row">
-        <div class="col-sm-4" *ngFor="let card of cards">
+        <div class="col" *ngFor="let card of Cards">
             <app-card class="card" [card]="card"></app-card>
         </div>
     </div>

@@ -9,8 +9,14 @@ import { CardComponent } from '../card/card.component';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  public form: Offering = {
+    Title: '',
+    Description: '',
+    Price: 0
+  };
 
-  public Cards: Card[] = [];
+  public Cards: Card[] = [{
+    Title: 'Title', Description: 'DEscription', ImgUrl: '', Location: 'Location', Date: new Date()  }];
 
   constructor() {
   }
@@ -21,4 +27,10 @@ export class DashboardComponent implements OnInit {
   Submit(form: any): void {
     console.log(form);
   }
+}
+
+export interface Offering {
+  Title: string;
+  Description: string;
+  Price: number;
 }
