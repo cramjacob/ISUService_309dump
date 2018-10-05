@@ -38,6 +38,7 @@ namespace Web.Controllers
         /// <param name="id">The ID of the user you want</param>
         /// <returns>The tuple from sys.user that has Id = parameter Id</returns>
         [HttpGet("{id}")]
+        [EnableCors("SiteCorsPolicy")]
         public User Get(int id)
         {
             return _context.user.Find(id);
@@ -70,6 +71,7 @@ namespace Web.Controllers
         /// <param name="id">Id of the user you want to update</param>
         /// <param name="value">Values that are being updated</param>
         [HttpPut("{id}")]
+        [EnableCors("SiteCorsPolicy")]
         public void Put(int id, [FromBody]string value)
         {
         }
@@ -79,6 +81,7 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="id">Id of the user you want to delete</param>
         [HttpDelete("{id}")]
+        [EnableCors("SiteCorsPolicy")]
         public void Delete(int id)
         {
         }
