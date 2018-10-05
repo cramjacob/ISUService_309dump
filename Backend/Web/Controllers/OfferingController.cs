@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Web.Data;
 using Web.Models;
@@ -9,6 +10,7 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Produces("application/json")]
+    [EnableCors("SiteCorsPolicy")]
     [Route("api/offering")]
     public class OfferingController : Controller
     {
@@ -24,6 +26,7 @@ namespace Web.Controllers
         /// </summary>
         /// <returns>All tuples from sys.offering</returns>
         [HttpGet]
+        [EnableCors("SiteCorsPolicy")]
         public IEnumerable<Offering> Get()
         {
             return _context.offering;
@@ -35,6 +38,7 @@ namespace Web.Controllers
         /// <param name="id">Id of the offering you want</param>
         /// <returns>The tuple in sys.offering with Id = parameter id</returns>
         [HttpGet("{id}")]
+        [EnableCors("SiteCorsPolicy")]
         public Offering Get(int id)
         {
             Offering ret = _context.offering.Find(id);
@@ -46,6 +50,7 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
+        [EnableCors("SiteCorsPolicy")]
         public Offering Post(OfferingDTO offering)
         {
             Offering postObject = new Offering()
@@ -74,6 +79,7 @@ namespace Web.Controllers
         /// <param name="id">Id of the offering to edit</param>
         /// <param name="value">Values being edited</param>
         [HttpPut("{id}")]
+        [EnableCors("SiteCorsPolicy")]
         public void Put(int id, [FromBody]string value)
         {
         }
@@ -83,6 +89,7 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="id">Id of the offering you want to delete</param>
         [HttpDelete("{id}")]
+        [EnableCors("SiteCorsPolicy")]
         public void Delete(int id)
         {
         }
