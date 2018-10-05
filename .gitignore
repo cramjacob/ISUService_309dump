@@ -93,6 +93,8 @@ ipch/
 
 # TFS 2012 Local Workspace
 $tf/
+.sql
+.vscode
 
 # Guidance Automation Toolkit
 *.gpState
