@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-4">
+        <h4>Create an Offering</h4>
+        <form #form="ngForm" (ngSubmit)="Submit(form.value)">
+            <label>Title</label>
+            <br>
+            <input type="text" name="title" [(ngModel)]="title">
+            <br>
+            <label>Description</label>
+            <br>
+            <input type="text" name="description" [(ngModel)]="description">
+
+            <br>
+
+            <label>Price</label>
+            <br>
+            <input type="range" name="Price" name="price" [(ngModel)]="value"  min="0" max="100">         
+            <p>{{ value }}</p>
+
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col" *ngFor="let card of Cards">
+            <app-card class="card" [card]="card"></app-card>
+        </div>
+    </div>
+</div>
