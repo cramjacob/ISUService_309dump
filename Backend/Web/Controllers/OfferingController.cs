@@ -37,7 +37,8 @@ namespace Web.Controllers
         [HttpGet("{id}")]
         public Offering Get(int id)
         {
-            return _context.offering.Find(id);
+            Offering ret = _context.offering.Find(id);
+            return ret;
         }
 
         /// <summary>
@@ -45,19 +46,26 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
-        public Offering Post(Offering offering)
+        public Offering Post(OfferingDTO offering)
         {
-            offering.UserID = 1;
+            Offering postObject = new Offering()
+            {
+                ID = offering.ID,
+                Title = offering.Title,
+                Description = offering.Description,
+                Image = Convert.FromBase64String(offering.Image),
+                UserID = 1
+            };
             try
             {
-                _context.offering.Add(offering);
+                _context.offering.Add(postObject);
                 _context.SaveChanges();
             }
             catch(Exception ex)
             {
                 throw ex;
             }
-            return _context.offering.Find(offering.ID);
+            return _context.offering.Find(postObject.ID);
         }
 
         /// <summary>
