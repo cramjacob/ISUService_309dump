@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Web.Data;
 using Web.Models;
@@ -9,6 +10,7 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Produces("application/json")]
+    [EnableCors("SiteCorsPolicy")]
     [Route("api/offering")]
     public class OfferingController : Controller
     {
@@ -24,6 +26,7 @@ namespace Web.Controllers
         /// </summary>
         /// <returns>All tuples from sys.offering</returns>
         [HttpGet]
+        [EnableCors("SiteCorsPolicy")]
         public IEnumerable<Offering> Get()
         {
             return _context.offering;
@@ -35,9 +38,11 @@ namespace Web.Controllers
         /// <param name="id">Id of the offering you want</param>
         /// <returns>The tuple in sys.offering with Id = parameter id</returns>
         [HttpGet("{id}")]
+        [EnableCors("SiteCorsPolicy")]
         public Offering Get(int id)
         {
-            return _context.offering.Find(id);
+            Offering ret = _context.offering.Find(id);
+            return ret;
         }
 
         /// <summary>
@@ -45,19 +50,27 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
-        public Offering Post(Offering offering)
+        [EnableCors("SiteCorsPolicy")]
+        public Offering Post(OfferingDTO offering)
         {
-            offering.UserID = 1;
+            Offering postObject = new Offering()
+            {
+                ID = offering.ID,
+                Title = offering.Title,
+                Description = offering.Description,
+                Image = Convert.FromBase64String(offering.Image),
+                UserID = 1
+            };
             try
             {
-                _context.offering.Add(offering);
+                _context.offering.Add(postObject);
                 _context.SaveChanges();
             }
             catch(Exception ex)
             {
                 throw ex;
             }
-            return _context.offering.Find(offering.ID);
+            return _context.offering.Find(postObject.ID);
         }
 
         /// <summary>
@@ -66,6 +79,7 @@ namespace Web.Controllers
         /// <param name="id">Id of the offering to edit</param>
         /// <param name="value">Values being edited</param>
         [HttpPut("{id}")]
+        [EnableCors("SiteCorsPolicy")]
         public void Put(int id, [FromBody]string value)
         {
         }
@@ -75,6 +89,7 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="id">Id of the offering you want to delete</param>
         [HttpDelete("{id}")]
+        [EnableCors("SiteCorsPolicy")]
         public void Delete(int id)
         {
         }
