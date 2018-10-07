@@ -25,7 +25,12 @@ namespace Web.Models
         public string Image { get; set; }
 
         [Required]
-        public int UserID { get; set; }
+        public DateTime Date { get; set; }
 
+        [Required]
+        public string Location { get; set; }
+
+        [Required]
+        public int UserID { get; set; }
     }
 }

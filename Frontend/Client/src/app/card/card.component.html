@@ -1,6 +1,6 @@
-<div class="card">
+<div class="card" *ngIf="CardURL">
   <div class="card-img-top">
-    <img src="{{card.ImgUrl}}">
+    <img [src]="CardURL">
   </div>
  
   <div class="card-body">
@@ -13,7 +13,7 @@
       <p class="text-center">{{card.Location}}</p>
     </div>
     <div class="col-sm-6 col-sm-offset-6">
-      <p class="text-center">{{card.Date | date}}</p>
+      <p class="text-center">{{card.PostDate | date}}</p>
     </div>
   </div>
 </div>

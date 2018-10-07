@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Card } from '../models/card.model';
 import { NgForm } from '@angular/forms';
 import { CardComponent } from '../card/card.component';
+import { OfferingService } from '../offering.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,28 +10,27 @@ import { CardComponent } from '../card/card.component';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  public form: Offering = {
+  public form: Card = {
+    ID: 1,
     Title: '',
     Description: '',
-    Price: 0
+    Image: '',
+    PostDate: new Date(),
+    Location: 'Ames, IA',
+    UserID: 1
   };
 
-  public Cards: Card[] = [{
-    Title: 'Title', Description: 'DEscription', ImgUrl: '', Location: 'Location', Date: new Date()  }];
+  public Cards: Card[];
 
-  constructor() {
-  }
+  constructor(private offeringService: OfferingService) { }
 
   ngOnInit() {
+    this.offeringService.GetOfferings().subscribe(cards => {
+      this.Cards = cards;
+    });
   }
 
   Submit(form: any): void {
     console.log(form);
   }
-}
-
-export interface Offering {
-  Title: string;
-  Description: string;
-  Price: number;
 }

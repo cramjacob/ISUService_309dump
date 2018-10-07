@@ -19,6 +19,10 @@ namespace Web.Models
 
         public byte[] Image { get; set; }
 
+        public DateTime PostDate { get; set; }
+        
+        public string Location { get; set; }
+
         public int UserID { get; set; }
 
     }
