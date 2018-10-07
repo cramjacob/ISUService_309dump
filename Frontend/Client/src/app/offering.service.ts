@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './models/user';
+import { Observable } from 'rxjs';
+import { Card } from './models/card.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +12,19 @@ export class OfferingService {
 
   constructor(private http: HttpClient) { }
 
-  GetOfferings(): void {
-    this.http.get(this.url).subscribe(val => {
-      console.log(val);
-    });
+  GetOfferings(): Observable<Card[]> {
+    return this.http.get<Card[]>(this.url);
   }
 
-  GetOffering(id: number): void {
-    this.http.get(this.url + '/' + id).subscribe(val => {
-      console.log(val);
-    });
+  GetOfferingById(id: number): Observable<Card> {
+    return this.http.get<Card>(this.url + '/' + id);
   }
 
-  PostOffering() {
-    let newUser: User = {
-      ID: 1,
-      Name: 'deni boi',
-      Email: 'sdfadf@sharklasers.com',
-      PasswordHash: 'asdfasdf',
-      PasswordSalt: 'asfasdf'
-    };
-    console.log('in post offering');
-    this.http.post<User>(this.url, newUser).subscribe(val => {
-      console.log(val);
-    })
+  PostOffering(offering: Card): Observable<Card> {
+    offering.UserID = 1;
+    offering.Location = 'Ames, IA';
+    offering.PostDate = new Date();
+    return this.http.post<Card>(this.url, offering);
   }
 
 }
