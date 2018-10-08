@@ -17,8 +17,6 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.CardURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.card.Image);
-    console.log(this.card);
-    console.log(this.CardURL);
   }
 
 }
