@@ -1,4 +1,4 @@
-<div class="card" *ngIf="CardURL">
+<div class="card" *ngIf="card">
   <div class="card-img-top">
     <img [src]="CardURL">
   </div>
@@ -8,7 +8,7 @@
     <p class="card-text">{{card.Description | slice:0:120}}...</p>  
     
   </div>
-  <div class=" row locationdate" >
+  <div class="row locationdate" >
     <div class="col-sm-6">
       <p class="text-center">{{card.Location}}</p>
     </div>
