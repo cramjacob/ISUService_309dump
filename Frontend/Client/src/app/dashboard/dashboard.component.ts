@@ -32,17 +32,5 @@ export class DashboardComponent implements OnInit {
 
   Submit(form: any): void {
     console.log(form);
-    const offering: Card = {
-      ID: 1,
-      Title: form.Title,
-      Description: form.Description,
-      Image: 'image',
-      PostDate: new Date(),
-      Location: form.Location,
-      UserID: 1
-    };
-    this.offeringService.PostOffering(offering).subscribe(card => {
-      this.Cards.push(card);
-    });
   }
 }
