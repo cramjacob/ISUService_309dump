@@ -10,15 +10,6 @@ import { OfferingService } from '../offering.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  public form: Card = {
-    ID: 1,
-    Title: '',
-    Description: '',
-    Image: '',
-    PostDate: new Date(),
-    Location: 'Ames, IA',
-    UserID: 1
-  };
 
   public Cards: Card[];
 
@@ -41,8 +32,9 @@ export class DashboardComponent implements OnInit {
       Location: form.Location,
       UserID: 1
     };
-    this.offeringService.PostOffering(offering).subscribe(card => {
-      this.Cards.push(card);
-    });
+    console.log(offering);
+    // this.offeringService.PostOffering(offering).subscribe(card => {
+    //   this.Cards.push(card);
+    // });
   }
 }

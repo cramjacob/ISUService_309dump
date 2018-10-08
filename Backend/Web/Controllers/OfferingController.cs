@@ -9,7 +9,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [EnableCors("SiteCorsPolicy")]
+    [EnableCors("CorsPolicy")]
     [Produces("application/json")]
     [Route("api/offering")]
     public class OfferingController : Controller
