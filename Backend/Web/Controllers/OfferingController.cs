@@ -49,15 +49,13 @@ namespace Web.Controllers
         [HttpPost]
         public Offering Post(OfferingDTO offering)
         {
-            var postObject = new Offering()
+            Offering postObject = new Offering()
             {
                 ID = offering.ID,
                 Title = offering.Title,
                 Description = offering.Description,
-                Image = new byte[] { 0xff, 0xfa },
-                Location = offering.Location,
-                PostDate = offering.PostDate,
-                UserID = offering.UserID
+                Image = Convert.FromBase64String(offering.Image),
+                UserID = 1
             };
             try
             {
@@ -68,7 +66,7 @@ namespace Web.Controllers
             {
                 throw ex;
             }
-            return _context.offering.Last();
+            return _context.offering.Find(postObject.ID);
         }
 
         /// <summary>

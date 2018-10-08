@@ -4,15 +4,11 @@
         <form #form="ngForm" (ngSubmit)="Submit(form.value)">
             <label>Title</label>
             <br>
-            <input type="text" name="Title" [(ngModel)]="Title">
+            <input type="text" name="title" [(ngModel)]="title">
             <br>
             <label>Description</label>
             <br>
-            <input type="text" name="Description" [(ngModel)]="Description">
-            <br>
-            <label>Location</label>
-            <br>
-            <input type="text" name="Location" [(ngModel)]="Location">
+            <input type="text" name="description" [(ngModel)]="description">
             <br>
             <button type="submit">Submit</button>
         </form>

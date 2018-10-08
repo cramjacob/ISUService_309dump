@@ -21,7 +21,9 @@ export class OfferingService {
   }
 
   PostOffering(offering: Card): Observable<Card> {
-    console.log(offering);
+    offering.UserID = 1;
+    offering.Location = 'Ames, IA';
+    offering.PostDate = new Date();
     return this.http.post<Card>(this.url, offering);
   }
 

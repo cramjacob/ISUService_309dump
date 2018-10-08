@@ -12,18 +12,25 @@ namespace Web.Models
     // This model is sent from Angular
     public class OfferingDTO
     {
+        [Key]
         public int ID { get; set; }
-        
+
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public string Description { get; set; }
-        
+
+        [Required]
         public string Image { get; set; }
-        
-        public DateTime PostDate { get; set; }
-        
+
+        [Required]
+        public DateTime Date { get; set; }
+
+        [Required]
         public string Location { get; set; }
-        
+
+        [Required]
         public int UserID { get; set; }
     }
 }
