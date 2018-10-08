@@ -1,7 +1,9 @@
 export interface Card {
+    ID: number;
     Title: string;
     Description: string;
-    ImgUrl: string;
-    Date: Date;
+    Image: string;
+    PostDate: Date;
     Location: string;
+    UserID: number;
 }
