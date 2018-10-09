@@ -47,7 +47,7 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
-        public Offering Post(OfferingDTO offering)
+        public Offering Post([FromBody] OfferingDTO offering)
         {
             var postObject = new Offering()
             {
@@ -57,7 +57,14 @@ namespace Web.Controllers
                 Image = new byte[] { 0xff, 0xfa },
                 Location = offering.Location,
                 PostDate = offering.PostDate,
-                UserID = offering.UserID
+                UserID = offering.UserID 
+                /*ID = 4,
+                Title = "ppp",
+                Description = "ppppp",
+                Image = new byte[] { 0xff, 0xfa },
+                Location = "ames",
+                PostDate = offering.PostDate,
+                UserID = 1*/
             };
             try
             {
