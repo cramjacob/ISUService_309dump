@@ -58,13 +58,6 @@ namespace Web.Controllers
                 Location = offering.Location,
                 PostDate = offering.PostDate,
                 UserID = offering.UserID 
-                /*ID = 4,
-                Title = "ppp",
-                Description = "ppppp",
-                Image = new byte[] { 0xff, 0xfa },
-                Location = "ames",
-                PostDate = offering.PostDate,
-                UserID = 1*/
             };
             try
             {
