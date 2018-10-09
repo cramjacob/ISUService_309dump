@@ -21,7 +21,7 @@ export class OfferingService {
   }
 
   PostOffering(offering: Card): Observable<Card> {
-    console.dir(offering);
+    console.log(offering);
     return this.http.post<Card>(this.url, offering);
   }
 
