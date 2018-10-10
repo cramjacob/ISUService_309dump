@@ -7,3 +7,12 @@ export interface Card {
     Location: string;
     UserID: number;
 }
+
+export interface CreateCard {
+    Title: string;
+    Description: string;
+    Image: string;
+    PostDate: Date;
+    Location: string;
+    UserID: number;
+}

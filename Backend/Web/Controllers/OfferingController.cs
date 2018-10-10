@@ -51,7 +51,6 @@ namespace Web.Controllers
         {
             var postObject = new Offering()
             {
-                ID = offering.ID,
                 Title = offering.Title,
                 Description = offering.Description,
                 Image = new byte[] { 0xff, 0xfa },

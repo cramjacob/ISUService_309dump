@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Card } from './models/card.model';
+import { Card, CreateCard } from './models/card.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,9 @@ export class OfferingService {
     return this.http.get<Card>(this.url + '/' + id);
   }
 
-  PostOffering(offering: Card): Observable<Card> {
+  PostOffering(offering: CreateCard): Observable<CreateCard> {
     console.log(offering);
-    return this.http.post<Card>(this.url, offering);
+    return this.http.post<CreateCard>(this.url, offering);
   }
 
 }

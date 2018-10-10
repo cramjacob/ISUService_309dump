@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from '../models/card.model';
+import { Card, CreateCard } from '../models/card.model';
 import { NgForm } from '@angular/forms';
 import { CardComponent } from '../card/card.component';
 import { OfferingService } from '../offering.service';
@@ -23,8 +23,7 @@ export class DashboardComponent implements OnInit {
 
   Submit(form: any): void {
     console.log(form);
-    const offering: Card = {
-      ID: 7,
+    const offering: CreateCard = {
       Title: form.Title,
       Description: form.Description,
       Image: 'image',
@@ -34,7 +33,7 @@ export class DashboardComponent implements OnInit {
     };
      console.log(offering);
      this.offeringService.PostOffering(offering).subscribe(cards => {
-       this.Cards.push(cards);
+       this.Cards.push(cards as Card);
     });
   }
 }

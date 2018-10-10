@@ -11,9 +11,7 @@ namespace Web.Models
 {
     // This model is sent from Angular
     public class OfferingDTO
-    {
-        public int ID { get; set; }
-        
+    {        
         public string Title { get; set; }
 
         public string Description { get; set; }
