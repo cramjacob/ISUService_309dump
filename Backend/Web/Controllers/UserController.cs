@@ -72,7 +72,7 @@ namespace Web.Controllers
         /// <param name="value">Values that are being updated</param>
         [HttpPut("{id}")]
         [EnableCors("SiteCorsPolicy")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]User user)
         {
         }
 
@@ -84,6 +84,8 @@ namespace Web.Controllers
         [EnableCors("SiteCorsPolicy")]
         public void Delete(int id)
         {
+            var user = _context.user.Find(id);
+            _context.user.Remove(user);
         }
     }
 }

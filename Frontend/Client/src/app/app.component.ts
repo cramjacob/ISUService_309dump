@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Card } from './models/card.model';
-import { OfferingService } from './offering.service';
+import { OfferingService } from './services/offering.service';
 
 
 @Component({
