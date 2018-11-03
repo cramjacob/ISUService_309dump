@@ -4,24 +4,27 @@ import { HttpClientModule } from '@angular/common/http';
 import { OfferingService } from './services/offering.service';
 
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { CardComponent } from './card/card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
+    LoginComponent,
     DashboardComponent,
     HeaderComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([])
   ],
   providers: [OfferingService],
   bootstrap: [AppComponent]
