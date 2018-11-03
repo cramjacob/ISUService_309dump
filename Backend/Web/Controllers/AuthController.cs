@@ -13,7 +13,7 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Produces("application/json")]
-    [EnableCors("SiteCorsPolicy")]
+    [EnableCors("CorsPolicy")]
     [Route("api/auth")]
     public class AuthController : Controller
     {
@@ -26,7 +26,6 @@ namespace Web.Controllers
         }
 
         [HttpPost("register")]
-        [EnableCors("SiteCorsPolicy")]
         public User Register([FromBody] ApiUser user)
         {
             // If user with email already exists, don't create a new one
@@ -72,7 +71,6 @@ namespace Web.Controllers
         }
 
         [HttpPost("login")]
-        [EnableCors("SiteCorsPolicy")]
         public User Login([FromBody] ApiUser user)
         {
             // Get user with same email in DB
@@ -81,7 +79,7 @@ namespace Web.Controllers
             // If no user with that email exists in the database, return false
             if (dbUser == null)
             {
-                return false;
+                return null;
             }
 
             // Get salt from database

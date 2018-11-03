@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
+import { ApiUser } from '../models/user.model';
 
 // import {AlertService, AuthenticationService} from '@/services';
 
-@Component({templateUrl: './login.component.html',
-selector: 'app-login'})
+@Component({
+  templateUrl: './login.component.html',
+  selector: 'app-login'
+})
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
@@ -15,29 +19,36 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
-    // private authenticationService: AuthenticationService,
-  ) {  }
+    private authService: AuthService) {  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
-
-    // then get retun url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
+
   get f() { return this.loginForm.controls; }
+
   onSubmit() {
     this.submitted = true;
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
     this.loading = true;
-    console.log(this.loginForm);
+
+    const user = {
+      Email: this.loginForm.value.email,
+      Password: this.loginForm.value.password
+    } as ApiUser;
+
+    if (this.authService.Login(user)) {
+      console.log(JSON.parse(localStorage.getItem('currentUser')));
+      this.router.navigate(['/dashboard']);
+    }
+
+    this.loading = false;
   }
 }
