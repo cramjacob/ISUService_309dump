@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Card, CreateCard } from '../models/card.model';
 import { NgForm } from '@angular/forms';
 import { CardComponent } from '../card/card.component';
-import { OfferingService } from '../offering.service';
+import { OfferingService } from '../services/offering.service';
 
 @Component({
   selector: 'app-dashboard',

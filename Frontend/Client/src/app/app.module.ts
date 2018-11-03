@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { OfferingService } from './offering.service';
+import { OfferingService } from './services/offering.service';
+
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,7 +18,6 @@ import { RouterModule } from '@angular/router';
     DashboardComponent,
     HeaderComponent,
     CardComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
