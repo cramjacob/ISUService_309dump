@@ -10,7 +10,6 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Produces("application/json")]
-    [EnableCors("SiteCorsPolicy")]
     [Route("api/user")]
     public class UserController : Controller
     {
@@ -26,7 +25,6 @@ namespace Web.Controllers
         /// </summary>
         /// <returns>All tuples from sys.user table</returns>
         [HttpGet]
-        [EnableCors("SiteCorsPolicy")]
         public IEnumerable<User> Get()
         {
             return _context.user;
@@ -38,7 +36,6 @@ namespace Web.Controllers
         /// <param name="id">The ID of the user you want</param>
         /// <returns>The tuple from sys.user that has Id = parameter Id</returns>
         [HttpGet("{id}")]
-        [EnableCors("SiteCorsPolicy")]
         public User Get(int id)
         {
             return _context.user.Find(id);
@@ -49,7 +46,6 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
-        [EnableCors("SiteCorsPolicy")]
         public User Post(User user)
         {
             try
@@ -71,7 +67,6 @@ namespace Web.Controllers
         /// <param name="id">Id of the user you want to update</param>
         /// <param name="value">Values that are being updated</param>
         [HttpPut("{id}")]
-        [EnableCors("SiteCorsPolicy")]
         public void Put(int id, [FromBody]User user)
         {
         }
@@ -81,7 +76,6 @@ namespace Web.Controllers
         /// </summary>
         /// <param name="id">Id of the user you want to delete</param>
         [HttpDelete("{id}")]
-        [EnableCors("SiteCorsPolicy")]
         public void Delete(int id)
         {
             var user = _context.user.Find(id);
