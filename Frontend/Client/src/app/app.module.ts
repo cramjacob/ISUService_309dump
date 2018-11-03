@@ -10,6 +10,7 @@ import { CardComponent } from './card/card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     DashboardComponent,
     HeaderComponent,
     CardComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

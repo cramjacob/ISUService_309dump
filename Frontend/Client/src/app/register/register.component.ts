@@ -3,12 +3,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-// import {AlertService, AuthenticationService} from '@/services';
-
-@Component({templateUrl: './login.component.html',
-selector: 'app-login'})
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
+})
+export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -21,23 +22,24 @@ export class LoginComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      name: ['', Validators.required],
+      password: ['', Validators.required],
+      password2: ['', Validators.required]
     });
-
     // then get retun url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-  get f() { return this.loginForm.controls; }
+  get f() { return this.registerForm.controls; }
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
-    if (this.loginForm.invalid) {
+    if (this.registerForm.invalid) {
       return;
     }
 
     this.loading = true;
-    console.log(this.loginForm);
+    console.log(this.registerForm);
   }
 }
