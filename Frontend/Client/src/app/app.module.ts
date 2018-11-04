@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { ChatComponent } from './chat/chat.component';
+import { MapComponent } from './map/map.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
     CardComponent,
     RegisterComponent,
     ChatComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
