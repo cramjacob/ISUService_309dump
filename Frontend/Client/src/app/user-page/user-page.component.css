@@ -1,0 +1,26 @@
+.breadcrumb {
+    background-color: white;
+}
+
+.image-border {
+    border-radius: 100%;
+}
+
+.usercontainer {
+    height: 30vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infocontainer {
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+}
+
+.biocontainer {
+    height: 15;
+    display: flex;
+    text-align: -webkit-center;
+}

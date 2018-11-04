@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { CardComponent } from './card/card.component';
 import { FormsModule } from '@angular/forms';
+import { UserPageComponent } from './user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     LoginPageComponent,
     DashboardComponent,
     HeaderComponent,
-    CardComponent
+    CardComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

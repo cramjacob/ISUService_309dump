@@ -7,7 +7,7 @@ import { User } from './models/user';
 })
 export class UserService {
 
-  private url = 'http://localhost:53902/api/user';
+  private url = 'http://localhost:53903/api/user';
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,7 @@ export class UserService {
   }
 
   PostOffering() {
-    let newUser: User = {
+    const newUser: User = {
       ID: 1,
       Name: 'deni boi',
       Email: 'sdfadf@sharklasers.com',
@@ -34,7 +34,7 @@ export class UserService {
     console.log('in post offering');
     this.http.post<User>(this.url, newUser).subscribe(val => {
       console.log(val);
-    })
+    });
   }
 
 }
