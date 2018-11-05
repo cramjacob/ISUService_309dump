@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
+import { ApiUser } from '../models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +16,9 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   returnUrl: string;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    // private authenticationService: AuthenticationService,
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private authService: AuthService,
   ) {  }
 
   ngOnInit() {
@@ -28,15 +28,30 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       password2: ['', Validators.required]
     });
-    // then get retun url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
   get f() { return this.registerForm.controls; }
+
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
+    }
+    if (this.registerForm.value.password !== this.registerForm.value.password2) {
+      console.log(this.registerForm.value.password);
+      console.log(this.registerForm.value.password2);
+      return;
+    }
+
+    const user = {
+      Name: this.registerForm.value.name,
+      Email: this.registerForm.value.email,
+      Password: this.registerForm.value.password
+    } as ApiUser;
+
+    if (this.authService.Register(user)) {
+      console.log(JSON.parse(localStorage.getItem('currentUser')));
+      this.router.navigate(['/login']);
     }
 
     this.loading = true;

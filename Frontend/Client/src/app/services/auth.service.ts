@@ -10,21 +10,21 @@ export class AuthService {
   private url = 'http://localhost:53902/api/auth';
   constructor(private http: HttpClient) { }
 
-  Login(user: ApiUser): boolean {
-    this.http.post<ApiUser>(this.url + '/login', user).subscribe(u => {
+  async Login(user: ApiUser): Promise<boolean> {
+    await this.http.post<ApiUser>(this.url + '/login', user).subscribe(u => {
       if (u != null) {
         localStorage.setItem('currentUser', JSON.stringify(u));
       }
     });
-    return localStorage.getItem('currentUser') != null;
+    return JSON.parse(localStorage.getItem('currentUser'))['Email'] === user.Email;
   }
 
-  Register(user: ApiUser): boolean {
-    this.http.post<ApiUser>(this.url + '/register', user).subscribe(u => {
+  async Register(user: ApiUser): Promise<boolean> {
+    await this.http.post<ApiUser>(this.url + '/register', user).subscribe(u => {
       if (u != null) {
         localStorage.setItem('currentUser', JSON.stringify(u));
       }
     });
-    return localStorage.getItem('currentUser') != null;
+    return JSON.parse(localStorage.getItem('currentUser'))['Email'] === user.Email;
   }
 }
