@@ -23,13 +23,13 @@ export class DashboardComponent implements OnInit {
 
   Submit(form: any): void {
     console.log(form);
+    console.log(JSON.parse(localStorage.getItem('currentUser')));
     const offering: CreateCard = {
       Title: form.Title,
       Description: form.Description,
-      Image: 'image',
       PostDate: new Date(),
       Location: form.Location,
-      UserID: 1
+      UserID: JSON.parse(localStorage.getItem('currentUser'))['ID']
     };
      console.log(offering);
      this.offeringService.PostOffering(offering).subscribe(cards => {

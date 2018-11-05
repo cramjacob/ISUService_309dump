@@ -53,7 +53,6 @@ namespace Web.Controllers
             {
                 Title = offering.Title,
                 Description = offering.Description,
-                Image = new byte[] { 0xff, 0xfa },
                 Location = offering.Location,
                 PostDate = offering.PostDate,
                 UserID = offering.UserID 

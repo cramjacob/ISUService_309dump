@@ -22,4 +22,7 @@ export class UserService {
     });
   }
 
+  AddBio(id: number, bio: string): void {
+    this.http.post(this.url + '/addbiography/' + id, bio);
+  }
 }
