@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Card } from '../models/card.model';
+import { Offering } from '../models/card.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user.model';
+import { OfferingService } from '../services/offering.service';
 
 @Component({
   selector: 'app-card',
@@ -9,15 +12,25 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class CardComponent implements OnInit {
 
-  @Input() card: Card;
+  @Input() card: Offering;
 
   public CardURL: SafeResourceUrl;
-  public cardUser: any;
+  public cardUser: User;
+  public currentUser;
+  public userID: number;
 
-  constructor() { }
+  constructor(private userService: UserService, private offeringService: OfferingService) { }
 
-  ngOnInit() {
-    this.cardUser = JSON.parse(localStorage.getItem('currentUser'));
+  async ngOnInit() {
+    await this.userService.GetSpecificUser(this.card.UserID).subscribe(x => {
+      this.cardUser = x;
+    });
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.userID = this.currentUser.ID;
+  }
+
+  Delete(): void {
+    this.offeringService.Delete(this.card.ID);
   }
 
 }

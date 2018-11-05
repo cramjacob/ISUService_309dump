@@ -52,6 +52,7 @@ namespace Web.Controllers
             {
                 Email = user.Email,
                 Name = user.Name,
+                Bio = null,
                 PasswordHash = hashedPassword,
                 PasswordSalt = salt
             };

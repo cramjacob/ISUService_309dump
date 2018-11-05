@@ -12,13 +12,14 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { ProfilePicFormComponent } from './profile-pic-form/profile-pic-form.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: UserPageComponent }
+  { path: 'profile/:id', component: UserPageComponent }
 ];
 
 @NgModule({
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     CardComponent,
     RegisterComponent,
     UserPageComponent,
+    ProfilePicFormComponent,
   ],
   imports: [
     BrowserModule,

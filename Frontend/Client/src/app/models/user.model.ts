@@ -3,6 +3,7 @@ export interface User {
     Name: string;
     Email: string;
     Bio: string;
+    ImageURL: string;
     PasswordHash: Blob;
     PasswordSalt: Blob;
 }

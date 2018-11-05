@@ -1,6 +1,7 @@
-<div class="card" *ngIf="card">
+<div class="card" *ngIf="cardUser != null">
   <div class="card-img-top">
-    <a routerLink="/profile">{{cardUser.Name}} ({{cardUser.ID}})</a>
+    <a [routerLink]="['/profile', cardUser.ID]">{{cardUser.Name}} ({{cardUser.ID}})</a>
+    <img src="{{card.ImageURL}}" />
   </div>
  
   <div class="card-body">
@@ -8,12 +9,9 @@
     <p class="card-text">{{card.Description | slice:0:120}}...</p>  
     
   </div>
-  <div class="row locationdate" >
-    <div class="col-sm-6">
-      <p class="text-center">{{card.Location}}</p>
-    </div>
-    <div class="col-sm-6 col-sm-offset-6">
-      <p class="text-center">{{card.PostDate | date}}</p>
-    </div>
+  <div class="d-flex justify-content-around locationrow" style="margin-bottom: 7px;">
+      <p style="margin-top: 3px;" class="text-center">{{card.Location}}</p>
+      <p style="margin-top: 3px;" class="text-center">{{card.PostDate | date}}</p>
+      <button class="btn-primary btn-danger" style="border-radius: 5px;" *ngIf="cardUser.ID == currentUser.ID" (click)=Delete()>Delete</button>
   </div>
 </div>

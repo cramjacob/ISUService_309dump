@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="user"> 
     <div class="row">
         <div class="col-sm-4 usercontainer" >
             <h6>Satisfaction</h6> 
@@ -6,7 +6,7 @@
         </div>  
 
         <div class="col-sm-4 usercontainer">
-            <img src="https://media.licdn.com/dms/image/C4E03AQFidnzwaFPBuQ/profile-displayphoto-shrink_200_200/0?e=1547078400&v=beta&t=9znaKtOqrdXuHA9pLtTyGmDWERZsW7cVWuDwE8AmpnQ" style="width:200px" class="image-border">
+            <img src="{{user.ImageURL}}" style="width:200px" class="image-border">
         </div>
         <div class="col-sm-4 usercontainer">
             <button type="button" class="btn-outline-secondary">Contact User</button>
@@ -21,9 +21,11 @@
     </div>
     
 </div>
-<div style="border:1px solid black">
+<div style="border:1px solid black" *ngIf="offerings">
     <h5 class="infocontainer">Services</h5>
-    <div class="col-sm-4" *ngFor="let card of Cards">
-        <app-card class="card" [card]="card"></app-card>
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let card of offerings">
+            <app-card class="card" [card]="card"></app-card>
+        </div>
     </div>
 </div>

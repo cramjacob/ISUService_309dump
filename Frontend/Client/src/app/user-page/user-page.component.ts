@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { ActivatedRoute } from '@angular/router';
+import { OfferingService } from '../services/offering.service';
+import { Offering } from '../models/card.model';
 
 @Component({
   selector: 'app-user-page',
@@ -8,11 +12,22 @@ import { Component, OnInit } from '@angular/core';
 export class UserPageComponent implements OnInit {
 
   public user;
+  public offerings: Offering[];
 
-  constructor() { }
+  constructor(private userService: UserService,
+              private offeringService: OfferingService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.route.paramMap.subscribe(params => {
+      const userId = +params.get('id');
+      this.userService.GetSpecificUser(userId).subscribe(x => {
+        this.user = x;
+      });
+      this.offeringService.GetOfferingByUser(userId).subscribe(offerings => {
+        this.offerings = offerings;
+      });
+    });
   }
 
 }

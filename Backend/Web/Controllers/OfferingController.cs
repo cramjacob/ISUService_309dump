@@ -42,6 +42,14 @@ namespace Web.Controllers
             return _context.offering.Find(id);
         }
 
+        [HttpGet("by-user/{userID}")]
+        public List<Offering> GetOfferingsByUser(int userID)
+        {
+            var offerings = _context.offering.Where(x => x.UserID == userID).ToList();
+            return offerings;
+
+        }
+
         /// <summary>
         /// Creates a new Offering in the database
         /// </summary>
@@ -55,6 +63,7 @@ namespace Web.Controllers
                 Description = offering.Description,
                 Location = offering.Location,
                 PostDate = offering.PostDate,
+                ImageURL = offering.ImageURL,
                 UserID = offering.UserID 
             };
             try
@@ -86,6 +95,13 @@ namespace Web.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var dbOffering = _context.offering.Find(id);
+            if (dbOffering == null)
+            {
+                return;
+            }
+            _context.offering.Remove(dbOffering);
+            _context.SaveChanges();
         }
     }
 }
