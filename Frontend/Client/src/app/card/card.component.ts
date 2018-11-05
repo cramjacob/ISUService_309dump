@@ -12,11 +12,12 @@ export class CardComponent implements OnInit {
   @Input() card: Card;
 
   public CardURL: SafeResourceUrl;
+  public cardUser: any;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor() { }
 
   ngOnInit() {
-    this.CardURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.card.Image);
+    this.cardUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 }
