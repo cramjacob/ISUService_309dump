@@ -53,9 +53,9 @@ namespace Web.Controllers
             {
                 Title = offering.Title,
                 Description = offering.Description,
-                Image = new byte[] { 0xff, 0xfa },
                 Location = offering.Location,
                 PostDate = offering.PostDate,
+                ImageURL = offering.ImageURL,
                 UserID = offering.UserID 
             };
             try
@@ -87,6 +87,13 @@ namespace Web.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var dbOffering = _context.offering.Find(id);
+            if (dbOffering == null)
+            {
+                return;
+            }
+            _context.offering.Remove(dbOffering);
+            _context.SaveChanges();
         }
     }
 }

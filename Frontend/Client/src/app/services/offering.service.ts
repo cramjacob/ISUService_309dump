@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Card, CreateCard } from '../models/card.model';
+import { Offering, CreateOffering } from '../models/card.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +12,21 @@ export class OfferingService {
 
   constructor(private http: HttpClient) { }
 
-  GetOfferings(): Observable<Card[]> {
-    return this.http.get<Card[]>(this.url);
+  GetOfferings(): Observable<Offering[]> {
+    return this.http.get<Offering[]>(this.url);
   }
 
-  GetOfferingById(id: number): Observable<Card> {
-    return this.http.get<Card>(this.url + '/' + id);
+  GetOfferingById(id: number): Observable<Offering> {
+    return this.http.get<Offering>(this.url + '/' + id);
   }
 
-  PostOffering(offering: CreateCard): Observable<CreateCard> {
+  PostOffering(offering: CreateOffering): Observable<CreateOffering> {
     console.log(offering);
-    return this.http.post<CreateCard>(this.url, offering);
+    return this.http.post<CreateOffering>(this.url, offering);
+  }
+
+  Delete(id: number): void {
+    this.http.delete<Offering>(this.url + '/' + id);
   }
 
 }

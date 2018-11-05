@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Card, CreateCard } from '../models/card.model';
+import { Offering, CreateOffering } from '../models/card.model';
 import { NgForm } from '@angular/forms';
 import { CardComponent } from '../card/card.component';
 import { OfferingService } from '../services/offering.service';
@@ -11,7 +11,7 @@ import { OfferingService } from '../services/offering.service';
 })
 export class DashboardComponent implements OnInit {
 
-  public Cards: Card[];
+  public Cards: Offering[];
 
   constructor(private offeringService: OfferingService) { }
 
@@ -23,17 +23,18 @@ export class DashboardComponent implements OnInit {
 
   Submit(form: any): void {
     console.log(form);
-    const offering: CreateCard = {
+    console.log(JSON.parse(localStorage.getItem('currentUser')));
+    const offering: CreateOffering = {
       Title: form.Title,
       Description: form.Description,
-      Image: 'image',
       PostDate: new Date(),
       Location: form.Location,
-      UserID: 1
+      ImageURL: form.ImageURL,
+      UserID: JSON.parse(localStorage.getItem('currentUser'))['ID']
     };
      console.log(offering);
      this.offeringService.PostOffering(offering).subscribe(cards => {
-       this.Cards.push(cards as Card);
+       this.Cards.push(cards as Offering);
     });
   }
 }

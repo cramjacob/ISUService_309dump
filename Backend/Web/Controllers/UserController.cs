@@ -38,7 +38,12 @@ namespace Web.Controllers
         [HttpGet("{id}")]
         public User Get(int id)
         {
-            return _context.user.Find(id);
+            var dbUser = _context.user.Find(id);
+            if (dbUser == null)
+            {
+                return null;
+            }
+            return dbUser;
         }
 
         /// <summary>
@@ -80,6 +85,19 @@ namespace Web.Controllers
         {
             var user = _context.user.Find(id);
             _context.user.Remove(user);
+        }
+
+        [HttpPost("addbiography/{id}")]
+        public void AddBio(int id, [FromBody]string bio)
+        {
+            var dbUser = _context.user.Find(id);
+            if (dbUser == null)
+            {
+                return;
+            }
+            dbUser.Bio = bio;
+            _context.SaveChanges();
+            return;
         }
     }
 }

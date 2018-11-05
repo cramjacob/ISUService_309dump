@@ -1,18 +1,18 @@
-export interface Card {
+export interface Offering {
     ID: number;
     Title: string;
     Description: string;
-    Image: string;
     PostDate: Date;
+    ImageURL: string;
     Location: string;
     UserID: number;
 }
 
-export interface CreateCard {
+export interface CreateOffering {
     Title: string;
     Description: string;
-    Image: string;
     PostDate: Date;
     Location: string;
     UserID: number;
+    ImageURL: string;
 }
