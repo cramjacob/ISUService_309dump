@@ -17,8 +17,6 @@ namespace Web.Models
 
         public string Description { get; set; }
 
-        public byte[] Image { get; set; }
-
         public DateTime PostDate { get; set; }
         
         public string Location { get; set; }

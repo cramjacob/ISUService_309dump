@@ -13,6 +13,8 @@ namespace Web.Models
 
         public string Email { get; set; }
 
+        public string Bio { get; set; }
+
         public byte[] PasswordHash { get; set; }
 
         public byte[] PasswordSalt { get; set; }
