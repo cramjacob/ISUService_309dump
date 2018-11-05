@@ -16,7 +16,7 @@ namespace Web.Models
 
         public string Description { get; set; }
         
-        public string Image { get; set; }
+        public string ImageURL { get; set; }
         
         public DateTime PostDate { get; set; }
         

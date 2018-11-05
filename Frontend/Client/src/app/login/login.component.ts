@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
     } as ApiUser;
 
     if (this.authService.Login(user)) {
-      console.log(JSON.parse(localStorage.getItem('currentUser')));
       this.router.navigate(['/dashboard']);
     }
 

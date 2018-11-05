@@ -50,7 +50,6 @@ export class RegisterComponent implements OnInit {
     } as ApiUser;
 
     if (this.authService.Register(user)) {
-      console.log(JSON.parse(localStorage.getItem('currentUser')));
       this.router.navigate(['/login']);
     }
 

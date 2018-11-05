@@ -15,6 +15,8 @@ namespace Web.Models
 
         public string Bio { get; set; }
 
+        public string ImageURL { get; set; }
+
         public byte[] PasswordHash { get; set; }
 
         public byte[] PasswordSalt { get; set; }

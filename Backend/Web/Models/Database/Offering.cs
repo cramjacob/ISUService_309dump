@@ -21,6 +21,8 @@ namespace Web.Models
         
         public string Location { get; set; }
 
+        public string ImageURL { get; set; }
+
         public int UserID { get; set; }
 
     }
