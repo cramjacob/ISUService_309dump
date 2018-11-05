@@ -38,7 +38,12 @@ namespace Web.Controllers
         [HttpGet("{id}")]
         public User Get(int id)
         {
-            return _context.user.Find(id);
+            var dbUser = _context.user.Find(id);
+            if (dbUser == null)
+            {
+                return null;
+            }
+            return dbUser;
         }
 
         /// <summary>
