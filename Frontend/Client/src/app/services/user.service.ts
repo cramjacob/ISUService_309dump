@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +22,7 @@ export class UserService {
     });
   }
 
+<<<<<<< HEAD:Frontend/Client/src/app/user.service.ts
   PostOffering() {
     const newUser: User = {
       ID: 1,
@@ -37,4 +37,6 @@ export class UserService {
     });
   }
 
+=======
+>>>>>>> 4e5e6310475ddcc452c4fa328c204c72e0b2514f:Frontend/Client/src/app/services/user.service.ts
 }
