@@ -17,14 +17,16 @@ export class CardComponent implements OnInit {
   public CardURL: SafeResourceUrl;
   public cardUser: User;
   public currentUser;
+  public userID: number;
 
   constructor(private userService: UserService, private offeringService: OfferingService) { }
 
-  ngOnInit() {
-    this.userService.GetSpecificUser(this.card.UserID).subscribe(x => {
+  async ngOnInit() {
+    await this.userService.GetSpecificUser(this.card.UserID).subscribe(x => {
       this.cardUser = x;
     });
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.userID = this.currentUser.ID;
   }
 
   Delete(): void {

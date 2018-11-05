@@ -1,6 +1,6 @@
 <div class="card" *ngIf="cardUser != null">
   <div class="card-img-top">
-    <a routerLink="/profile">{{cardUser.Name}} ({{cardUser.ID}})</a>
+    <a [routerLink]="['/profile', cardUser.ID]">{{cardUser.Name}} ({{cardUser.ID}})</a>
     <img src="{{card.ImageURL}}" />
   </div>
  

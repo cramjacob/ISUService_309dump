@@ -1,0 +1,31 @@
+<div *ngIf="user"> 
+    <div class="row">
+        <div class="col-sm-4 usercontainer" >
+            <h6>Satisfaction</h6> 
+            <h6>Completed</h6>
+        </div>  
+
+        <div class="col-sm-4 usercontainer">
+            <img src="{{user.ImageURL}}" style="width:200px" class="image-border">
+        </div>
+        <div class="col-sm-4 usercontainer">
+            <button type="button" class="btn-outline-secondary">Contact User</button>
+        </div>
+    </div>
+    <div class="infocontainer">
+        <h1>{{user.Name}}</h1>
+        
+    </div>
+    <div class="biocontainer" >
+        <h6 style="align-items: center">{{user.Bio}}</h6>
+    </div>
+    
+</div>
+<div style="border:1px solid black" *ngIf="offerings">
+    <h5 class="infocontainer">Services</h5>
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let card of offerings">
+            <app-card class="card" [card]="card"></app-card>
+        </div>
+    </div>
+</div>

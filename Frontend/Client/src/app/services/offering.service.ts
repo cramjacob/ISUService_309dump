@@ -8,7 +8,7 @@ import { Offering, CreateOffering } from '../models/card.model';
 })
 export class OfferingService {
 
-  private url = 'http://localhost:53902/api/offering';
+  private url = 'http://localhost:53903/api/offering';
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +18,10 @@ export class OfferingService {
 
   GetOfferingById(id: number): Observable<Offering> {
     return this.http.get<Offering>(this.url + '/' + id);
+  }
+
+  GetOfferingByUser(userId: number): Observable<Offering[]> {
+    return this.http.get<Offering[]>(this.url + '/by-user/' + userId);
   }
 
   PostOffering(offering: CreateOffering): Observable<CreateOffering> {

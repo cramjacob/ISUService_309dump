@@ -42,6 +42,14 @@ namespace Web.Controllers
             return _context.offering.Find(id);
         }
 
+        [HttpGet("by-user/{userID}")]
+        public List<Offering> GetOfferingsByUser(int userID)
+        {
+            var offerings = _context.offering.Where(x => x.UserID == userID).ToList();
+            return offerings;
+
+        }
+
         /// <summary>
         /// Creates a new Offering in the database
         /// </summary>
