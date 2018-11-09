@@ -1,0 +1,14 @@
+<h2>Create a Service</h2>
+<form #offeringForm="ngForm" (ngSubmit)="Submit(offeringForm.value)">
+  <h4>Title</h4>
+  <input type="text" class="form-control" name="Title" ngModel #nameField="ngModel">
+  <h4>Description</h4>
+  <input type="text" class="form-control" name="Description" ngModel #nameField="ngModel">
+  <h4>Location</h4>
+  <input type="text" class="form-control" name="Location" ngModel #nameField="ngModel">
+  <h4>ImageURL</h4>
+  <input type="text" class="form-control" name="ImageURL" ngModel #nameField="ngModel">
+  <br>
+  <button class="btn-submit" type="submit">Post Offering</button>
+
+</form>

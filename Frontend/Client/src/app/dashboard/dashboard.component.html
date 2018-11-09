@@ -1,19 +1,4 @@
 <div class="row">
-    <div class="col-sm-4">
-        <h4>Create an Offering</h4>
-        <form #offeringForm="ngForm" (ngSubmit)="Submit(offeringForm.value)">
-            <h6>Title</h6>
-            <input type="text" class="form-control" name="Title" ngModel #nameField="ngModel">
-            <h6>Description</h6>
-            <input type="text" class="form-control" name="Description" ngModel #nameField="ngModel">
-            <h6>Location</h6>
-            <input type="text" class="form-control" name="Location" ngModel #nameField="ngModel">
-            <h6>ImageURL</h6>
-            <input type="text" class="form-control" name="ImageURL" ngModel #nameField="ngModel">
-            <br>
-            <button class="btn-submit" type="submit">Post Offering</button>
-        </form>
-    </div>
     <div class="col-sm-4" *ngFor="let card of Cards">
         <app-card class="card" [card]="card"></app-card>
     </div>

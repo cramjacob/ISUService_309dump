@@ -7,6 +7,7 @@
 
         <div class="col-sm-4 usercontainer">
             <img src="{{user.ImageURL}}" style="width:200px" class="image-border">
+            <button class="btn-primary" style="border-radius: 5px;" *ngIf="user.ID == currentUser.ID" (click)=Delete()>Delete</button>
         </div>
         <div class="col-sm-4 usercontainer">
             <button type="button" class="btn-outline-secondary">Contact User</button>
@@ -16,13 +17,13 @@
         <h1>{{user.Name}}</h1>
         
     </div>
-    <div class="biocontainer" >
+    <div class="biocontainer">
         <h6 style="align-items: center">{{user.Bio}}</h6>
     </div>
     
 </div>
 <div style="border:1px solid black" *ngIf="offerings">
-    <h5 class="infocontainer">Services</h5>
+    <h4 class="infocontainer">Services</h4>
     <div class="row">
         <div class="col-sm-4" *ngFor="let card of offerings">
             <app-card class="card" [card]="card"></app-card>
