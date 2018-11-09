@@ -4,7 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { OfferingService } from '../services/offering.service';
-import { RequestDTO } from '../models/request.model'
+import { RequestDTO } from '../models/request.model';
 
 @Component({
   selector: 'app-card',
@@ -32,7 +32,7 @@ export class CardComponent implements OnInit {
 
   Delete(): void {
     console.log('delete');
-    this.offeringService.Delete(this.card.ID);
+    this.offeringService.Delete(this.card.ID).subscribe(x => {});
   }
 
   Request(): void {
@@ -41,7 +41,7 @@ export class CardComponent implements OnInit {
       RequesterID: this.currentUser.ID,
       OfferingID: this.card.ID,
       Timestamp: new Date()
-    }
+    };
     console.log(req);
     this.offeringService.Request(req).subscribe(x => {});
   }
