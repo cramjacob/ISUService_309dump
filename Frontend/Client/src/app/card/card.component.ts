@@ -32,7 +32,7 @@ export class CardComponent implements OnInit {
 
   Delete(): void {
     console.log('delete');
-    this.offeringService.Delete(this.card.ID);
+    this.offeringService.Delete(this.card.ID).subscribe(x => {});
   }
 
   Request(): void {
