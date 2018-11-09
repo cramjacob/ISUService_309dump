@@ -13,8 +13,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private offeringService: OfferingService) { }
 
-  ngOnInit() {
-    this.offeringService.GetOfferings().subscribe(cards => {
+  async ngOnInit() {
+    await this.offeringService.GetOfferings().subscribe(cards => {
       this.Cards = cards;
     });
   }

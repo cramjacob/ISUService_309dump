@@ -103,5 +103,34 @@ namespace Web.Controllers
             _context.offering.Remove(dbOffering);
             _context.SaveChanges();
         }
+
+        [HttpPost("request")]
+        public RequestDTO RequestDTO([FromBody] RequestDTO request)
+        {
+            var dbUserRequester = _context.user.Find(request.RequesterID);
+            var dbUserRequestee = _context.user.Find(request.RequesteeID);
+            var offering = _context.offering.Find(request.OfferingID);
+            if (dbUserRequestee == null || dbUserRequester == null || offering == null)
+            {
+                return null;
+            }
+            try
+            {
+                var dbRequest = new RequestDTO()
+                {
+                    RequesteeID = request.RequesteeID,
+                    RequesterID = request.RequesterID,
+                    OfferingID = request.OfferingID,
+                    Timestamp = request.Timestamp
+                };
+                _context.request.Add(dbRequest);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _context.request.Last();
+        }
     }
 }

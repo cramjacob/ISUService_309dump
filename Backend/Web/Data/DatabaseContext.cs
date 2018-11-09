@@ -19,5 +19,7 @@ namespace Web.Data
         public virtual DbSet<User> user { get; set; }
 
         public virtual DbSet<Offering> offering { get; set; }
+
+        public virtual DbSet<RequestDTO> request { get; set; }
     }
 }
