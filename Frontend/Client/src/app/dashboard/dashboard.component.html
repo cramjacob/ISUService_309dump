@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="Cards">
     <div class="col-sm-4" *ngFor="let card of Cards">
         <app-card class="card" [card]="card"></app-card>
     </div>
