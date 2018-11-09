@@ -13,10 +13,16 @@
     height: 5vh;
     display: flex;
     justify-content: center;
+    margin-top: 15px;
 }
 
 .biocontainer {
     height: 15;
     display: flex;
     text-align: -webkit-center;
+    margin-bottom: 15px;
 }
+
+.card {
+    margin: 10px
+  }
