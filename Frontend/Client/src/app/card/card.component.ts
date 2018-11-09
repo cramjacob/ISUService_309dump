@@ -41,7 +41,7 @@ export class CardComponent implements OnInit {
       RequesterID: this.currentUser.ID,
       OfferingID: this.card.ID,
       Timestamp: new Date()
-    }
+    };
     console.log(req);
     this.offeringService.Request(req).subscribe(x => {});
   }
