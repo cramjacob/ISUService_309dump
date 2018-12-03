@@ -1,18 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Offering } from '../models/card.model';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { User } from '../models/user.model';
 import { OfferingService } from '../services/offering.service';
+import { Offering } from '../models/card.model';
+import { SafeResourceUrl } from '@angular/platform-browser';
+import { User } from '../models/user.model';
 import { RequestDTO } from '../models/request.model';
-import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  selector: 'app-service-page',
+  templateUrl: './service-page.component.html',
+  styleUrls: ['./service-page.component.css']
 })
-export class CardComponent implements OnInit {
+export class ServicePageComponent implements OnInit {
 
   @Input() card: Offering;
 
@@ -21,8 +21,9 @@ export class CardComponent implements OnInit {
   public currentUser;
   public userID: number;
 
-  constructor(private userService: UserService, private offeringService: OfferingService) { }
 
+  constructor(private userService: UserService, private offeringService: OfferingService) { }
+  
   async ngOnInit() {
     await this.userService.GetSpecificUser(this.card.UserID).subscribe(x => {
       this.cardUser = x;

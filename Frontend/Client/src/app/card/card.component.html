@@ -14,5 +14,6 @@
       <p style="margin-top: 3px;" class="text-center">{{card.PostDate | date}}</p>
       <button class="btn-primary btn-danger" style="border-radius: 5px;" *ngIf="cardUser.ID == currentUser.ID" (click)="Delete()">Delete</button>
       <button class="btn-primary" style="border-radius: 5px;" *ngIf="cardUser.ID != currentUser.ID" (click)="Request()">Request</button>
-  </div>
+      <a [routerLink]="['/service']">Learn more</a>
+    </div>
 </div>

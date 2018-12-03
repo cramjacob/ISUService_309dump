@@ -1,0 +1,33 @@
+<!--<div *ngIf="offering">
+  <div class="row">
+    <div class="col-6">
+      <h4>Service Name</h4>
+      <p>{{offering.Bio}}</p>
+      <h6>Location</h6>
+
+    </div>
+    <div class="col-6">
+      <div><a [routerLink]="['profile']">Posted by: {{offering.user}}</a></div>
+      <div><button class="align-self-end btn btn-success">REQUEST</button></div>
+    </div>
+  </div>
+</div>-->
+<div class="card" *ngIf="cardUser != null">
+    <div class="card-img-top">
+      <a [routerLink]="['/profile', cardUser.ID]">{{cardUser.Name}} ({{cardUser.ID}})</a>
+      <img src="{{card.ImageURL}}" />
+    </div>
+   
+    <div class="card-body">
+      <h4 class="card-title">{{card.Title}}</h4>
+      <p class="card-text">{{card.Description | slice:0:120}}...</p>  
+      
+    </div>
+    <div class="d-flex justify-content-around locationrow" style="margin-bottom: 7px;">
+        <p style="margin-top: 3px;" class="text-center">{{card.Location}}</p>
+        <p style="margin-top: 3px;" class="text-center">{{card.PostDate | date}}</p>
+        <button class="btn-primary btn-danger" style="border-radius: 5px;" *ngIf="cardUser.ID == currentUser.ID" (click)="Delete()">Delete</button>
+        <button class="btn-primary" style="border-radius: 5px;" *ngIf="cardUser.ID != currentUser.ID" (click)="Request()">Request</button>
+        <!--<a [routerLink]="['/service']">Learn more</a>-->
+      </div>
+  </div>
