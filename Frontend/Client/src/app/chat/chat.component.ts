@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatMessage } from '../models/message.model';
 import { SocketService, Event, Action } from '../services/socket.service';
-import { defaultKeyValueDiffers } from '@angular/core/src/change_detection/change_detection';
+import { HubConnectionBuilder, HubConnection } from '@aspnet/signalr';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -9,44 +9,40 @@ import { defaultKeyValueDiffers } from '@angular/core/src/change_detection/chang
 })
 export class ChatComponent implements OnInit {
 
-  public action = Action;
-  public user;
-  public messages: ChatMessage[] = [];
+  private hubConnection: HubConnection;
+  public currentUser;
+  public messages: string[] = [];
   public messageContent: string;
-  public socketConnection;
 
   constructor(private socketService: SocketService) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.InitializeSocketConnection();
   }
 
-  public SendMessage(message: string): void {
-    if (message == null) { return; }
-
-    const chatMessage: ChatMessage = {
-      UserID: this.user.ID,
-      Content: message
+  public sendMessage(msg: string): void {
+    const message: ChatMessage = {
+      UserID: this.currentUser.ID,
+      Content: msg
     };
 
-    this.socketService.SendMessage(chatMessage);
-    this.messageContent = null;
+    this.hubConnection
+      .invoke('sendToAll', msg)
+      .then(() => this.messageContent = '')
+      .catch(err => console.error(err));
   }
 
   private InitializeSocketConnection(): void {
-    this.socketService.InitializeSocket();
+    this.hubConnection = new HubConnectionBuilder().withUrl("http://localhost:53902").build();
+    this.hubConnection
+      .start()
+      .then(() => console.log('Connection started!'))
+      .catch(err => console.log('Error while establishing connection :('));
 
-    this.socketConnection = this.socketService.OnMessage().subscribe(message => {
-      this.messages.push(message);
-    });
-
-    this.socketService.OnEvent(Event.CONNECT).subscribe(() => {
-      console.log('Connected successfully');
-    });
-    
-    this.socketService.OnEvent(Event.DISCONNECT).subscribe(() => {
-      console.log('Disconnected successfully');
+    this.hubConnection.on('sendToAll', (msg: ChatMessage) => {
+      const text = `${msg.UserID}: ${msg.Content}`;
+      this.messages.push(msg.Content);
     });
   }
 
