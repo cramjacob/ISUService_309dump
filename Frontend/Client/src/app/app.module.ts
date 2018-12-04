@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { ProfilePicFormComponent } from './profile-pic-form/profile-pic-form.component';
 import { CreateServiceComponent } from './create-service/create-service.component';
+import { ChatComponent } from './chat/chat.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     RegisterComponent,
     UserPageComponent,
     ProfilePicFormComponent,
+    ChatComponent,
     CreateServiceComponent,
   ],
   imports: [
