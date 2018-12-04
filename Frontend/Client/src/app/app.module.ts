@@ -22,7 +22,8 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile/:id', component: UserPageComponent },
-  { path: 'create', component: CreateServiceComponent }
+  { path: 'create', component: CreateServiceComponent },
+  { path: 'chat', component: ChatComponent}
 ];
 
 @NgModule({

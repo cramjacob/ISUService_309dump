@@ -8,13 +8,12 @@ using Web.Data;
 
 namespace Web.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Socket")]
-    public class SocketController : Controller
+    [Route("api/chat")]
+    public class ChatController : Controller
     {
         private readonly DatabaseContext _context;
 
-        public SocketController(DatabaseContext context)
+        public ChatController(DatabaseContext context)
         {
             _context = context;
         }
