@@ -9,9 +9,14 @@ import { RequestDTO } from '../models/request.model';
 })
 export class OfferingService {
 
-  private url = 'http://localhost:53903/api/offering';
+
+  private url = 'http://localhost:53902/api/offering';
 
   constructor(private http: HttpClient) { }
+
+  GetRequestsByUser(userId: number): any {
+    return this.http.get<Request[]>(this.url + '/get-requests-by-user/' + userId);
+  }
 
   GetOfferings(): Observable<Offering[]> {
     return this.http.get<Offering[]>(this.url);
