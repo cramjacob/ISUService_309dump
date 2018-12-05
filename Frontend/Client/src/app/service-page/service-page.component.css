@@ -1,0 +1,13 @@
+.inline-header h5 { 
+    display: inline;
+}
+
+.button1 {
+    width: 30vw;
+    height: 15vh;
+}
+
+.row {
+    height: 40vh;
+}
+
