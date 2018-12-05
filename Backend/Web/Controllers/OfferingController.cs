@@ -104,6 +104,14 @@ namespace Web.Controllers
             _context.SaveChanges();
         }
 
+        [HttpGet("get-requests-by-user/{id}")]
+        public List<RequestDTO> GetRequestsByUser(int id)
+        {
+            var j = _context.request.Where(x => x.RequesteeID == id).ToList();
+            return j;
+        }
+
+
         [HttpPost("request")]
         public RequestDTO RequestDTO([FromBody] RequestDTO request)
         {
